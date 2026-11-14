@@ -1,0 +1,6 @@
+# Trocar SEU-SITE.netlify.app pelo endereço real depois de publicar.
+User-agent: *
+Allow: /
+Disallow: /creditos.html
+Disallow: /obrigado.html
+Sitemap: https://SEU-SITE.netlify.app/sitemap.xml
