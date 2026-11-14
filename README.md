@@ -80,7 +80,7 @@ Contato e reservas
 
 ## Tecnologias
 
-HTML, CSS e JavaScript puros, sem dependências no navegador. As páginas são geradas por um script em Python (`scripts/construir_paginas.py`), que mantém cabeçalho, rodapé e partes comuns em um lugar só.
+HTML, CSS e JavaScript puros, sem dependências no navegador e sem etapa de build.
 
 - Fontes: [Lora](https://fonts.google.com/specimen/Lora) e [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans), licença SIL OFL, servidas pelo próprio site.
 - Ícones: [Lucide](https://lucide.dev) (ISC) e o ícone do WhatsApp do [Simple Icons](https://simpleicons.org) (CC0).
@@ -98,17 +98,15 @@ HTML, CSS e JavaScript puros, sem dependências no navegador. As páginas são g
 
 ## Como rodar
 
-```bash
-python scripts/servidor_local.py
-```
-
-Abra http://127.0.0.1:8080/index.html. O servidor imita a hospedagem: endereços que não existem mostram a `404.html` com status 404, e os cabeçalhos do arquivo `_headers` são aplicados.
-
-Para abrir o site no celular, na mesma rede Wi-Fi:
+O site é estático. Na pasta do projeto, qualquer servidor local serve:
 
 ```bash
-python scripts/servidor_local.py --celular
+python -m http.server 8080
 ```
+
+Abra http://127.0.0.1:8080/index.html. Esse servidor simples não aplica o arquivo `_headers` nem mostra a `404.html` para endereços inexistentes, o que só acontece na hospedagem.
+
+Para abrir o site no celular, na mesma rede Wi-Fi, use o endereço do computador na rede (por exemplo `http://192.168.0.10:8080`).
 
 ## Estrutura
 
@@ -124,32 +122,12 @@ assets/
   fonts/            fontes em woff2
   img/              fotos em 3 tamanhos (800, 1200 e 2000 px)
   logo/             logo em PNG com fundo transparente
-scripts/            geração das páginas, servidor local, testes e prints
 docs/screenshots/   imagens deste README
 ```
 
 ## Mudar o conteúdo
 
-Textos, quartos e preços ficam em `scripts/construir_paginas.py`. Depois de editar:
-
-```bash
-python scripts/construir_paginas.py
-```
-
-## Verificações
-
-```bash
-python scripts/verificar_links.py         # links, imagens e âncoras locais
-python scripts/auditar_html.py            # imagens sem tamanho, rótulos, títulos e ids
-node scripts/teste_site.js                # 11 páginas em 4 larguras (Playwright)
-node scripts/teste_funcional.js           # reserva, formulário, galeria, cookies, menu e tela de carregamento
-node scripts/auditar_acessibilidade.js    # contraste, foco pelo teclado, rótulos, títulos e alvos de toque
-python scripts/otimizar_imagens.py        # reduz o peso das fotos e das logos
-node scripts/gerar_prints.js              # captura as telas para o README
-python scripts/montar_prints.py           # monta as imagens do README
-```
-
-Os testes no navegador precisam do servidor local rodando na porta 8080.
+Textos, quartos e preços ficam direto nos arquivos `.html`. Estilos em `assets/css/style.css` e comportamento em `assets/js/main.js`.
 
 ## Aviso
 

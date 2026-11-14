@@ -2,8 +2,6 @@
 Thumbs.db
 node_modules/
 _publicar/
-scripts/_shots/
-scripts/_prints/
 
 # Notas internas de trabalho (não publicar)
 ESTADO_ATUAL.md
@@ -15,6 +13,8 @@ assets/logo/logo-original.jpg
 
 # Pasta de origem dos ícones enviados (o site usa assets/icons)
 /Icons/
-scripts/preparar_publicacao.py
 docs/PUBLICAR.md
 docs/linkedin/
+
+# Scripts de geração, testes e auditoria (só neste computador)
+scripts/
